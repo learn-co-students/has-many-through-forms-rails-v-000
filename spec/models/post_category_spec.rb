@@ -1,5 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe PostCategory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do 
+  	@post = Post.create(title: "New Post", content: "Post Content")
+  	@category = @post.categories.create(name: "Poetry")
+  end
+
+  it "gets created" do
+  	expect(@post.post_categories.size).to eq(1)
+  end
+
+  
 end
