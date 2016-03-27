@@ -1,3 +1,4 @@
+Finished README
 # Has Many Through Forms Rails
 
 ## Objectives
