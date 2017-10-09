@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:id])    
   end
 
   def index
@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    2.times {@post.categories.build}
   end
 
   def create
