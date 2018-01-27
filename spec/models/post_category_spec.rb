@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe PostCategory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#fake test" do
+    it 'is true' do
+      true 
+    end
+  end
 end
