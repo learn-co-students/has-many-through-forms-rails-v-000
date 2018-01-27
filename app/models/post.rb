@@ -10,4 +10,7 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def whatdoyouwantfromme
+  end
+
 end
