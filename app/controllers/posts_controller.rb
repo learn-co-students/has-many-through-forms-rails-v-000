@@ -17,7 +17,7 @@ class PostsController < ApplicationController
   end
 
   private
-
+#post_params to expect a key of :category_ids with a value of an #array.
   def post_params
     params.require(:post).permit(:title, :content, category_ids:[], categories_attributes: [:name])
   end
