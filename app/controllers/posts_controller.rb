@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    #Change file
     @post = Post.new
   end
 
