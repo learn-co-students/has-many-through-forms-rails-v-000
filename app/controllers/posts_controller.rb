@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   def show
+    # raise post_params.inspect
     @post = Post.find(params[:id])
   end
 
