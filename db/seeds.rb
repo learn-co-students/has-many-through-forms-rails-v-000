@@ -8,4 +8,4 @@
 
 post = Post.create([{title: "new post"}, {content: "some words"}])
 category = Category.create(name: "category 1")
-post_category = PostCategory.create(post_id: 1, category_id: 1)
+post_category = PostCategory.create(post_id: 9, category_id: 1)
