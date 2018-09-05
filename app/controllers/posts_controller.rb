@@ -16,6 +16,9 @@ class PostsController < ApplicationController
     redirect_to post
   end
 
+  def delete
+  end
+
   private
 
   def post_params
