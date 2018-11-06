@@ -4,7 +4,9 @@ class Post < ActiveRecord::Base
 
 
   def categories_attributes=(category_attributes)
+    binding.pry
     category_attributes.values.each do |category_attribute|
+      binding.pry
       category = Category.find_or_create_by(category_attribute)
       self.post_categories.build(category: category)
     end
