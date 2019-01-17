@@ -1,14 +1,31 @@
 <div class=post-content>
   <%= @post.content %>
 </div>
+
 <%= form_for post do |f| %>
   <%= f.label "Title" %>
   <%= f.text_field :title %>
   <%= f.label "Content" %>
-  <%= f.text_area :content %>
-  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+  <%= f.text_area :content %><br>
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br>
   <%= f.fields_for :categories, post.categories.build do |categories_fields| %>
+    <%= categories_fields.label :name, "Category Name:" %>
     <%= categories_fields.text_field :name %>
   <% end %>
   <%= f.submit %>
 <% end %>
+
+<!--
+<fieldset>
+  <form action="/posts" method="POST">
+    Title:<input type="text" name="post[:title]">
+    Content:<textarea name="post[:title]"></textarea><br>
+    <% Category.all.each do |category| %>
+      <input type="checkbox" name="post[:category_ids][]" value="<%=category.id%>"><%=category.name%>
+    <% end %>
+    <br>
+    Category Name:<input type="text" name="post[:categories_attributes][][:name]">
+    <input type="submit" value="Submit">
+  </form>
+</fieldset>
+-->
