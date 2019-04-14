@@ -1,5 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe Category, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe 'Category' do
+
+  it "can be created" do
+    Category.create(name: "Fiction")
+    expect(Category.find_by(name: "Fiction")).to be_present
+  end
+
+
+
+
+
+
 end
