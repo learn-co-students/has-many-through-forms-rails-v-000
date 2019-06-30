@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'bundler', '< 2.0'
 
+gem 'rspec'
+
 gem 'bootsnap'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -44,5 +46,6 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails', '~> 3.7'
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'pry'
 end
