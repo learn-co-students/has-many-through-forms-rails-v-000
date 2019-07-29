@@ -1,6 +1,6 @@
 #dummy test
 
-require "test_helper"
+require "spec_helper"
 
 describe "Song" do
 
