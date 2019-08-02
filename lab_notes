@@ -1,0 +1,48 @@
+<%= @post.title %>
+<%= @post.content %>
+<% @post.categories.each do |category| %>
+  <%= category.name %>
+<% end %>
+<% @post.unique_comments.each do |comment| %>
+ <%= link_to "#{comment.user.username} says: ", user_path(comment) %>
+ <%= comment.content %>
+<% end %>
+
+<%= form_for @post.comments.build do |f|%>
+  <%= f.hidden_field :post_id %>
+  <%= f.text_area :content %>
+  <%= f.collection_select :user_id, User.all, :id, :username %>
+  <p>Create New User:</p>
+  <%= f.fields_for :user, @post.comments.last.build_user do |user_fields|%>
+ 
+    <%= user_fields.text_field :username %>
+    <%= user_fields.text_field :email %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= form_for @post do |f| %>
+  <%= f.fields_for :comments, @post.comments.build do |comment_attributes| %>
+    <!-- maybe place hidden_field :post_id -->
+
+    <!-- Comment Content -->
+    <%= comment_attributes.label "Content:" %>
+    <%= comment_attributes.text_area :content %>
+    
+    <!-- User Comment -->
+    <%= comment_attributes.collection_select :user_id, User.all, :id, :username %>
+    <!-- User Select existing user -->
+    
+    <%= comment_attributes.label "New User" %>
+    <%= comment_attributes.fields_for :user, @post.users.build do |comment_user_attributes| %>
+      <!-- User Username -->
+      <%= comment_user_attributes.label "Username:" %>
+      <%= comment_user_attributes.text_field :username %>
+      <!-- User Email -->
+      <%= comment_user_attributes.label "Email:" %>
+      <%= comment_user_attributes.text_field %>
+    <% end %>
+    <%= comment_attributes.submit %>
+  <% end %>|
+<% end %>
