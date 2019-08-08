@@ -1,1 +1,16 @@
-<%= render @post %>
+<h1><%= @post.title %></h1>
+<p>
+    <%= @post.content %>
+</p>
+<p>
+Categories: <%= @post.content.map(&:name).join(", ") %></p>
+
+<ul>
+<% @post.comments.each do |comment| %>
+<li>
+    <%= comment.user.username %> says: <%= comment.content %>
+</li>
+<% end %>
+</ul>
+
+Commenters:
