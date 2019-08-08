@@ -3,7 +3,8 @@
     <%= @post.content %>
 </p>
 <p>
-Categories: <%= @post.content.map(&:name).join(", ") %></p>
+Categories: 
+<%= @post.content.map(&:name).join(", ") %></p>
 
 <ul>
 <% @post.comments.each do |comment| %>
