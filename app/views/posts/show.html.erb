@@ -4,8 +4,10 @@
 </p>
 <p>
 Categories: 
-<%= @post.content.map(&:name).join(", ") %></p>
-
+<!-- <%= @post.categories.map(&:name).join(" ") %></p> -->
+ <% @post.categories.each do |cat| %>
+ <p> <%=cat.name %></p>
+<% end %>
 <ul>
 <% @post.comments.each do |comment| %>
 <li>
