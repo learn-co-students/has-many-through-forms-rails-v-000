@@ -7,10 +7,10 @@ class Post < ActiveRecord::Base
 
   # custom setter
   def categories_attributes=(categories_hashes)
-    categories_hashes.values.each do |category_attribute|
-      category = Category.find_or_create_by(category_attribute)
+    categories_hashes.values.each do |category_attributes|
       # DO NOT CREATE A CATEGORY IF IT DOESN'T HAVE A NAME
-      if category_attribute[:name].present?
+      if category_attributes[:name].present?
+        category = Category.find_or_create_by(category_attributes)
         # DON'T ADD A CATEGORY TO A POST IF IT ALREADY HAS IT
         if !self.categories.include?(category)
           # new row in post_categories
