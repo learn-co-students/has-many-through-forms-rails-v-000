@@ -9,11 +9,17 @@ class Post < ActiveRecord::Base
   def categories_attributes=(categories_hashes)
     categories_hashes.values.each do |category_attribute|
       category = Category.find_or_create_by(category_attribute)
-      # new row in post_categories
-      # instanciating an instance of the join model, passing category
-      self.post_categories.build(category: category)
-      # not efficeint or ideal to push
-      #self.categories << category
+      # DO NOT CREATE A CATEGORY IF IT DOESN'T HAVE A NAME
+      if category_attribute[:name].present?
+        # DON'T ADD A CATEGORY TO A POST IF IT ALREADY HAS IT
+        if !self.categories.include?(category)
+          # new row in post_categories
+          # instanciating an instance of the join model, passing category
+          self.post_categories.build(category: category)
+          # not efficeint or ideal to push
+          #self.categories << category
+        end
+      end
     end
   end
 
