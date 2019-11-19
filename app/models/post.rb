@@ -1,13 +1,18 @@
 class Post < ActiveRecord::Base
+  # adds methods, ie: post_categories, post_categories<<, post_categories.delete, post_categories_ids=ids
   has_many :post_categories
+  # adds methods, ie: category_ids=ids
   has_many :categories, through: :post_categories
   accepts_nested_attributes_for :categories
 
-
+  # custom setter
   def categories_attributes=(categories_hashes)
     categories_hashes.values.each do |category_attribute|
       category = Category.find_or_create_by(category_attribute)
+      # new row in post_categories
+      # instanciating an instance of the join model, passing category
       self.post_categories.build(category: category)
+      # not efficeint or ideal to push
       #self.categories << category
     end
   end
