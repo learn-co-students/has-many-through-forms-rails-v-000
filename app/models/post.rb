@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   has_many :post_categories
   # adds methods, ie: category_ids=ids
   has_many :categories, through: :post_categories
+  # adds methods
   accepts_nested_attributes_for :categories
 
   # custom setter
