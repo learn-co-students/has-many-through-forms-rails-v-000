@@ -18,7 +18,10 @@ class PostsController < ApplicationController
 
   private
 
+  #Makes processing things easier and cleaner.
+
   def post_params
     params.require(:post).permit(:title, :content, category_ids:[], categories_attributes: [:name])
   end
 end
+
