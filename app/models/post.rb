@@ -4,8 +4,9 @@ class Post < ActiveRecord::Base
 
 
   def categories_attributes=(category_attributes)
-    category_attributes.values.each do |category_attribute|
-      category = Category.find_or_create_by(category_attribute)
+    #rails turns this into a hash
+    category_attributes.values.each do |attribute|
+      category = Category.find_or_create_by(attribute)
       self.post_categories.build(category: category)
     end
   end
