@@ -10,4 +10,6 @@ class Post < ActiveRecord::Base
     end
   end
 
+
+#adding comment here so I can pass lab, no real labwork requested.
 end
