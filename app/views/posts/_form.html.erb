@@ -1,13 +1,22 @@
 <div class=post-content>
   <%= @post.content %>
 </div>
-<%= form_for post do |f| %>
+<%= form_for @post do |f| %>
   <%= f.label "Title" %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title %><br>
   <%= f.label "Content" %>
-  <%= f.text_area :content %>
-  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-  <%= f.fields_for :categories, post.categories.build do |categories_fields| %>
+  <%= f.text_area :content %><br><br>
+  <%= f.label "Categories" %>
+ <!-- f.collection_check_boxes(:method, Collection.all (or an array of objects that responds to these methods), :value_method, :text_method (can be custom method, ie: downcase_name, defined in collecion model)) -->
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+    <p>
+      <%= b.label %>
+      <%= b.check_box %>
+    </p>
+  <% end %>
+  <!-- -->
+  <%= f.fields_for :categories do |categories_fields| %>
+    <%= categories_fields.label "New Category" %>
     <%= categories_fields.text_field :name %>
   <% end %>
   <%= f.submit %>
